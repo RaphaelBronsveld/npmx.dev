@@ -160,7 +160,9 @@ import {
   BlueskyPostEmbed,
   BuildEnvironment,
   ButtonBase,
-  LandingLogo,
+  LandingIntroHeader,
+  NoodleKawaiiLogo,
+  NoodleArtemisLogo,
   LinkBase,
   CallToAction,
   CodeDirectoryListing,
@@ -354,9 +356,23 @@ describe('component accessibility audits', () => {
     })
   })
 
-  describe('LandingLogo', () => {
+  describe('LandingIntroHeader', () => {
     it('should have no accessibility violations', async () => {
-      const component = await mountSuspended(LandingLogo)
+      const component = await mountSuspended(LandingIntroHeader)
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('Noodles', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(NoodleKawaiiLogo)
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(NoodleArtemisLogo)
       const results = await runAxe(component)
       expect(results.violations).toEqual([])
     })
